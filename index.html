@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The World Explodes in 90 Seconds | Official Documentation</title>
         <style>
             body {
@@ -9,7 +10,9 @@
                 margin: 40px;
                 line-height: 1.6;
                 color: #333;
+                background-color: #ffffff;
                 transition: background-color 0.3s, color 0.3s;
+                padding-top: 60px;
             }
             
             a {
@@ -24,7 +27,22 @@
             h1 {
                 border-bottom: 1px solid #eaecef;
                 padding-bottom: .3em;
-                scroll-margin-top: 60px;
+                scroll-margin-top: 100px;
+            }
+
+            h2 {
+                margin-top: 24px;
+                margin-bottom: 16px;
+                font-weight: 600;
+                line-height: 1.25;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                margin: 10px 0;
             }
 
             #nav-container {
@@ -40,6 +58,7 @@
                 display: flex;
                 align-items: center;
                 gap: 5px;
+                flex-wrap: wrap;
             }
 
             #nav-select {
@@ -57,7 +76,7 @@
                 background-color: #ffffff;
                 padding: 15px;
                 border: 1px solid #ccc;
-                border-radius: 2px;
+                border-radius: 6px;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.1);
                 z-index: 999;
                 width: 200px;
@@ -78,24 +97,43 @@
                 align-items: center;
                 margin-bottom: 8px;
                 cursor: pointer;
+                color: #202122;
             }
 
             .theme-option input {
                 margin-right: 10px;
                 cursor: pointer;
             }
+
+            @media (max-width: 768px) {
+                body {
+                    margin: 20px;
+                    padding-top: 140px;
+                }
+                #nav-container {
+                    top: 10px;
+                    right: 10px;
+                    left: 10px;
+                    justify-content: center;
+                }
+                #theme-container {
+                    top: 80px;
+                    right: 10px;
+                    width: auto;
+                }
+            }
         </style>
     </head>
     <body>
 
         <div id="nav-container">
-            <label for="nav-select" style="font-weight: bold;">Go To (Section):</label>
+            <label for="nav-select" style="font-weight: bold; color: #333;">Go To:</label>
             <select id="nav-select" onchange="const el = document.getElementById(this.value); if(el) el.scrollIntoView({behavior: 'smooth'});">
                 <option value="" disabled selected>Select Section</option>
                 <option value="section-how-to-play">How to Play</option>
-                <option value="section-free-models">Free Models Used List</option>
-                <option value="section-credits">Credits</option>
+                <option value="section-free-models">Free Models Used</option>
                 <option value="section-follow-game-updates">Follow the Game</option>
+                <option value="section-credits">Credits</option>
             </select>
         </div>
 
@@ -123,18 +161,22 @@
 
         <br>
 
-        <img src="images/spawnedIn.png" alt="" style="width: 500px;">
+        <img src="images/spawnedIn.png" alt="Spawned In" style="width: 500px;">
 
         <br>
 
         <p>As soon as you spawn in, you'll see a <strong>countdown timer at the top of your screen.</strong> You have <strong>90 seconds</strong> to find the button and activate it before time runs out!</p>
         <p>Look around the environment for clues and hints that will lead you to the button's location. <br>Explore different areas, interact with objects, and pay attention to any visual clues that may help you in your search.</p>
         <p>Once you find the button, approach it and hold it to activate it. <br>Be quick, as the timer is ticking down!</p>
-        <img src="images/buttonPreview.png" alt="" style="width: 300px;">
+        
+        <img src="images/buttonPreview.png" alt="Button Preview" style="width: 300px;">
+        
         <p>If you successfully activate the button before the timer reaches zero, <strong>you win</strong> the game!</p>
-        <p>Shortly, you will be teleported to the 'Winners' Place,' where you should search until you find the more challenges sign, <br>and head towards it. There, you may participate in <strong>different challenges</strong> in order to win <em>Coins.</em> <br>Coins are useful to buy features in the <strong>Shop</strong> and to trade with others!</strong></p>
-        <img src="images/headToMoreChallenges.png" alt="" style="width: 350px;">
-        <img src="images/challengesAppear.png" alt="" style="width: 350px;">
+        <p>Shortly, you will be teleported to the 'Winners' Place,' where you should search until you find the more challenges sign, <br>and head towards it. There, you may participate in <strong>different challenges</strong> in order to win <em>Coins.</em> <br>Coins are useful to buy features in the <strong>Shop</strong> and to trade with others!</p>
+        
+        <img src="images/headToMoreChallenges.png" alt="Head to Challenges" style="width: 350px;">
+        
+        <img src="images/challengesAppear.png" alt="Challenges Appear" style="width: 350px;">
 
         <br>
 
@@ -151,8 +193,8 @@
         <h2>Meshes</h2>
 
         <p><strong>Timebomb (used for timebomb minigame)</strong></p>
-        <p>By: @vastintheonlyword (<a href="https://www.roblox.com/users/8770222131/profile">Profile Link</a>)</p>
-        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/87227352133606">Asset Link</a></p>
+        <p>By: @vastintheonlyword (<a href="https://www.roblox.com/users/8770222131/profile" target="_blank">Profile Link</a>)</p>
+        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/87227352133606" target="_blank">Asset Link</a></p>
         <p><strong>Notes</strong></p>
         <p>If you are seeing this (@vastintheonlyword), I believe your asset is good <em>though</em> there is one spot that is almost full-white and it kind of ruined the mesh.</p>
 
@@ -161,25 +203,25 @@
         <h2>Models</h2>
 
         <p><strong>Donation Board 4.0 (used for obvious reasons)</strong></p>
-        <p>By: Dev Equip (<a href="https://www.roblox.com/communities/32958950">Community Link</a>)</p>
-        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/17677778124">Asset Link</a></p>
+        <p>By: Dev Equip (<a href="https://www.roblox.com/communities/32958950" target="_blank">Community Link</a>)</p>
+        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/17677778124" target="_blank">Asset Link</a></p>
 
         <br>
 
         <p><strong>External Information about Asset</strong></p>
         <p>Community Discord: <em>hidden for child safety reasons (personally, I have not checked to see if the Discord Server is appropriate <br>so I will currently not provide any Discord Server mentions if I have not personally established that they are safe, <br>check it at the direct link to asset).</em></p>
-        <p>YouTube: <a href="https://www.youtube.com/channel/UCjkUADK-gZMKgZ7XJpF7fsQ">Channel Link</a></p>
-        <p>Community Owner (the asset was made by a Community within Roblox): @DonKingFrog (<a href="https://www.roblox.com/users/851917460">Profile Link</a>)</p>
+        <p>YouTube: <a href="https://www.youtube.com/channel/UCjkUADK-gZMKgZ7XJpF7fsQ" target="_blank">Channel Link</a></p>
+        <p>Community Owner (the asset was made by a Community within Roblox): @DonKingFrog (<a href="https://www.roblox.com/users/851917460" target="_blank">Profile Link</a>)</p>
 
         <br>
 
         <p><strong>Maze (used for OG challenge)</strong></p>
-        <p>By: @DonaldDuck5150 <a href="https://www.roblox.com/users/1600716686">(Profile Link)</a></p>
-        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/18822017935">Asset Link</a></p>
+        <p>By: @DonaldDuck5150 <a href="https://www.roblox.com/users/1600716686" target="_blank">(Profile Link)</a></p>
+        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/18822017935" target="_blank">Asset Link</a></p>
 
         <br>
 
-        <h1 id="section-follow-game-updates">The World Explodes in 90 Seconds | Follow the Game To Never Miss a Thing!</h1>
+        <h1 id="section-follow-game-updates">The World Explodes in 90 Seconds | Follow the Game!</h1>
 
         <br>
 
@@ -189,19 +231,20 @@
         <p>Click "Notify"</p>
         <p>And boom! You will never miss an update again!</p>
         <p>(and it also helps us advertise the game!)</p>
-        <img src="images/notifyButton.png" alt="" style="width: 400px;">
+        
+        <img src="images/notifyButton.png" alt="Notify Button" style="width: 400px;">
         <br>
 
         <h1 id="section-credits">The World Explodes in 90 Seconds | Credits</h1>
 
         <br>
 
-        <p>Game Developed by: @Incognit56 (<a href="https://www.roblox.com/users/3274659508">Profile Link</a>) and @koz_viktor (<a href="https://www.roblox.com/users/5456387039">Profile Link</a>)</p>
+        <p>Game Developed by: @Incognit56 (<a href="https://www.roblox.com/users/3274659508" target="_blank">Profile Link</a>) and @koz_viktor (<a href="https://www.roblox.com/users/5456387039" target="_blank">Profile Link</a>)</p>
         <p><strong><em>Huge</em></strong> shoutouts to <strong>early testers & donators </strong></p>
-        <p>@sejernbox (<a href="https://www.roblox.com/users/1570959598">Profile Link</a>)</p>
-        <p>@Ayothatgreat (<a href="https://www.roblox.com/users/4540627419">Profile Link</a>)</p>
-        <p>@hreeee45 (<a href="https://www.roblox.com/users/7698637022">Profile Link</a>)</p>
-        <p>@Diegx_1771 (<a href="https://www.roblox.com/users/7837054428">Profile Link</a>)</p>
+        <p>@sejernbox (<a href="https://www.roblox.com/users/1570959598" target="_blank">Profile Link</a>)</p>
+        <p>@Ayothatgreat (<a href="https://www.roblox.com/users/4540627419" target="_blank">Profile Link</a>)</p>
+        <p>@hreeee45 (<a href="https://www.roblox.com/users/7698637022" target="_blank">Profile Link</a>)</p>
+        <p>@Diegx_1771 (<a href="https://www.roblox.com/users/7837054428" target="_blank">Profile Link</a>)</p>
 
     </body>
 </html>
