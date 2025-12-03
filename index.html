@@ -1,106 +1,141 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>The World Explodes in 90 Seconds | Official Documentation</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-            color: #333;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <title>The World Explodes in 90 Seconds | Official Documentation</title>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                margin: 40px;
+                line-height: 1.6;
+                color: #333;
+            }
+            
+            a {
+                color: #0969da;
+                text-decoration: none;
+            }
+            
+            a:hover {
+                text-decoration: underline;
+            }
+
+            h1 {
+                border-bottom: 1px solid #eaecef;
+                padding-bottom: .3em;
+                scroll-margin-top: 60px;
+            }
+
+            #nav-container {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: white;
+                padding: 10px;
+                border: 1px solid #eaecef;
+                border-radius: 6px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            #nav-select {
+                padding: 5px;
+                font-size: 14px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="nav-container">
+            <label for="nav-select" style="font-weight: bold;">Go to:</label>
+            <select id="nav-select" onchange="const el = document.getElementById(this.value); if(el) el.scrollIntoView({behavior: 'smooth'});">
+                <option value="" disabled selected>Search / Select Section...</option>
+                <option value="section-how-to-play">How to Play</option>
+                <option value="section-free-models">Free Models Used List</option>
+                <option value="section-credits">Credits</option>
+            </select>
+        </div>
+
+        <h1 id="section-how-to-play">The World Explodes in 90 Seconds | How to Play</h1>
+
+        <br>
+
+        <p>Welcome to <strong>"The World Explodes in 90 Seconds"!</strong> In this <em>thrilling</em> game, your objective is to find and activate a button before you explode! Here's how to play:</p>
+
+        <br>
+
+        <h2>You have just spawned in. What to do?</h2>
+
+        <br>
+
+        <img src="images/spawnedIn.png" alt="" style="width: 500px;">
+
+        <br>
+
+        <p>As soon as you spawn in, you'll see a <strong>countdown timer at the top of your screen.</strong> You have <strong>90 seconds</strong> to find the button and activate it before time runs out!</p>
+        <p>Look around the environment for clues and hints that will lead you to the button's location. <br>Explore different areas, interact with objects, and pay attention to any visual clues that may help you in your search.</p>
+        <p>Once you find the button, approach it and hold it to activate it. <br>Be quick, as the timer is ticking down!</p>
+        <img src="images/buttonPreview.png" alt="" style="width: 300px;">
+        <p>If you successfully activate the button before the timer reaches zero, <strong>you win</strong> the game!</p>
+        <p>Shortly, you will be teleported to the 'Winners' Place,' where you should search until you find the more challenges sign, <br>and head towards it. There, you may participate in <strong>different challenges</strong> in order to win <em>Coins.</em> <br>Coins are useful to buy features in the <strong>Shop</strong> and to trade with others!</strong></p>
+        <img src="images/headToMoreChallenges.png" alt="" style="width: 350px;">
+        <img src="images/challengesAppear.png" alt="" style="width: 350px;">
+
+        <br>
+
+        <h2>What happens if I fail to activate the button in time?</h2>
+        <p>If you fail to activate the button within the 90-second time limit, the game will end, though<br>don't worry; you can <em>always</em> try again!</p>
+        <p>Feel free to explore the environment, interact with objects, and strategize for your next attempt. <br>Remember, <strong>practice makes perfect!</strong></p>
+
+        <br>
+
+        <h1 id="section-free-models">The World Explodes in 90 Seconds | Free Models Used List</h1>
         
-        a {
-            color: #0969da;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
+        <br>
 
-        h1 {
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: .3em;
-        }
-    </style>
-</head>
-<body>
-    <h1>The World Explodes in 90 Seconds | How to Play</h1>
+        <h2>Meshes</h2>
 
-    <br>
+        <p><strong>Timebomb (used for timebomb minigame)</strong></p>
+        <p>By: @vastintheonlyword (<a href="https://www.roblox.com/users/8770222131/profile">Profile Link</a>)</p>
+        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/87227352133606">Asset Link</a></p>
+        <p><strong>Notes</strong></p>
+        <p>If you are seeing this (@vastintheonlyword), I believe your asset is good <em>though</em> there is one spot that is almost full-white and it kind of ruined the mesh.</p>
 
-    <p>Welcome to <strong>"The World Explodes in 90 Seconds"!</strong> In this <em>thrilling</em> game, your objective is to find and activate a button before you explode! Here's how to play:</p>
+        <br>
 
-    <br>
+        <h2>Models</h2>
 
-    <h2>You have just spawned in. What to do?</h2>
+        <p><strong>Donation Board 4.0 (used for obvious reasons)</strong></p>
+        <p>By: Dev Equip (<a href="https://www.roblox.com/communities/32958950">Community Link</a>)</p>
+        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/17677778124">Asset Link</a></p>
 
-    <br>
+        <br>
 
-    <img src="images/spawnedIn.png" alt="" style="width: 500px;">
+        <p><strong>External Information about Asset</strong></p>
+        <p>Community Discord: <em>hidden for child safety reasons (personally, I have not checked to see if the Discord Server is appropriate <br>so I will currently not provide any Discord Server mentions if I have not personally established that they are safe, <br>check it at the direct link to asset).</em></p>
+        <p>YouTube: <a href="https://www.youtube.com/channel/UCjkUADK-gZMKgZ7XJpF7fsQ">Channel Link</a></p>
+        <p>Community Owner (the asset was made by a Community within Roblox): @DonKingFrog (<a href="https://www.roblox.com/users/851917460">Profile Link</a>)</p>
 
-    <br>
+        <br>
 
-    <p>As soon as you spawn in, you'll see a <strong>countdown timer at the top of your screen.</strong> You have <strong>90 seconds</strong> to find the button and activate it before time runs out!</p>
-    <p>Look around the environment for clues and hints that will lead you to the button's location. <br>Explore different areas, interact with objects, and pay attention to any visual clues that may help you in your search.</p>
-    <p>Once you find the button, approach it and hold it to activate it. <br>Be quick, as the timer is ticking down!</p>
-    <img src="images/buttonPreview.png" alt="" style="width: 300px;">
-    <p>If you successfully activate the button before the timer reaches zero, <strong>you win</strong> the game!</p>
-    <p>Shortly, you will be teleported to the 'Winners' Place,' where you should search until you find the more challenges sign, <br>and head towards it. There, you may participate in <strong>different challenges</strong> in order to win <em>Coins.</em> <br>Coins are useful to buy features in the <strong>Shop</strong> and to trade with others!</strong></p>
-    <img src="images/headToMoreChallenges.png" alt="" style="width: 350px;">
-    <img src="images/challengesAppear.png" alt="" style="width: 350px;">
+        <p><strong>Maze (used for OG challenge)</strong></p>
+        <p>By: @DonaldDuck5150 <a href="https://www.roblox.com/users/1600716686">(Profile Link)</a></p>
+        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/18822017935">Asset Link</a></p>
 
-    <br>
+        <br>
 
-    <h2>What happens if I fail to activate the button in time?</h2>
-    <p>If you fail to activate the button within the 90-second time limit, the game will end, though<br>don't worry; you can <em>always</em> try again!</p>
-    <p>Feel free to explore the environment, interact with objects, and strategize for your next attempt. <br>Remember, <strong>practice makes perfect!</strong></p>
+        <h1 id="section-credits">The World Explodes in 90 Seconds | Credits</h1>
 
-    <br>
+        <br>
 
-    <h1>The World Explodes in 90 Seconds | Free Models Used List</h1>
-    
-    <br>
+        <p>Game Developed by: @Incognit56 (<a href="https://www.roblox.com/users/3274659508">Profile Link</a>) and @koz_viktor (<a href="https://www.roblox.com/users/5456387039">Profile Link</a>)</p>
+        <p><strong><em>Huge</em></strong> shoutouts to <strong>early testers & donators</strong>(find the board with the names of the legends in-game!)</p>
 
-    <h2>Meshes</h2>
-
-    <p><strong>Timebomb (used for timebomb minigame)</strong></p>
-    <p>By: @vastintheonlyword (<a href="https://www.roblox.com/users/8770222131/profile">Profile Link</a>)</p>
-    <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/87227352133606">Asset Link</a></p>
-    <p><strong>Notes</strong></p>
-    <p>If you are seeing this (@vastintheonlyword), I believe your asset is good <em>though</em> there is one spot that is almost full-white and it kind of ruined the mesh.</p>
-
-    <br>
-
-    <h2>Models</h2>
-
-    <p><strong>Donation Board 4.0 (used for obvious reasons)</strong></p>
-    <p>By: Dev Equip (<a href="https://www.roblox.com/communities/32958950">Community Link</a>)</p>
-    <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/17677778124">Asset Link</a></p>
-
-    <br>
-
-    <p><strong>External Information about Asset</strong></p>
-    <p>Community Discord: <em>hidden for child safety reasons (personally, I have not checked to see if the Discord Server is appropriate <br>so I will currently not provide any Discord Server mentions if I have not personally established that they are safe, <br>check it at the direct link to asset).</em></p>
-    <p>YouTube: <a href="https://www.youtube.com/channel/UCjkUADK-gZMKgZ7XJpF7fsQ">Channel Link</a></p>
-    <p>Community Owner (the asset was made by a Community within Roblox): @DonKingFrog (<a href="https://www.roblox.com/users/851917460">Profile Link</a>)</p>
-
-    <br>
-
-    <p><strong>Maze (used for OG challenge)</strong></p>
-    <p>By: @DonaldDuck5150 <a href="https://www.roblox.com/users/1600716686">(Profile Link)</a></p>
-    <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/18822017935">Asset Link</a></p>
-
-    <br>
-
-    <h1>The World Explodes in 90 Seconds | Credits</h1>
-
-    <br>
-
-    <p>Game Developed by: @Incognit56 (<a href="https://www.roblox.com/users/3274659508">Profile Link</a>) and @koz_viktor (<a href="https://www.roblox.com/users/5456387039">Profile Link</a>)</p>
-    <p><strong><em>Huge</em></strong> shoutouts to <strong>early testers & donators</strong>(find the board with the names of the legends in-game!)</p>
-
-</body>
+    </body>
 </html>
