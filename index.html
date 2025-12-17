@@ -521,15 +521,12 @@
         </main>
 
         <script>
-            // Theme management with localStorage persistence
             function setTheme(theme) {
                 const body = document.body;
                 const isDark = theme === 'dark';
 
-                // Use data attribute for theme management
                 body.setAttribute('data-theme', theme);
 
-                // Update radio button state
                 const lightRadio = document.querySelector('input[name="theme_color"][value="light"]');
                 const darkRadio = document.querySelector('input[name="theme_color"][value="dark"]');
 
@@ -539,49 +536,39 @@
                     lightRadio.checked = true;
                 }
 
-                // Persist theme preference
                 localStorage.setItem('theme', theme);
             }
 
-            // Load saved theme on page load
             function loadTheme() {
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 setTheme(savedTheme);
             }
 
-            // Initialize theme on DOM load
             document.addEventListener('DOMContentLoaded', loadTheme);
 
-            // Enhanced navigation with keyboard support
             document.addEventListener('DOMContentLoaded', function() {
                 const navSelect = document.getElementById('nav-select');
 
-                // Add keyboard navigation
                 document.addEventListener('keydown', function(e) {
-                    // Alt + N to focus navigation
                     if (e.altKey && e.key === 'n') {
                         e.preventDefault();
                         navSelect.focus();
-                        // Announce to screen readers
                         navSelect.setAttribute('aria-live', 'polite');
                     }
 
-                    // Escape key to close expanded content (if any)
                     if (e.key === 'Escape') {
-                        // Close any open details elements
                         document.querySelectorAll('details[open]').forEach(details => {
                             details.removeAttribute('open');
                         });
                     }
                 });
 
-                // Improve smooth scrolling with offset for fixed navigation
                 function smoothScrollToElement(elementId) {
                     const targetElement = document.getElementById(elementId);
                     if (targetElement) {
                         const navHeight = document.getElementById('nav-container').offsetHeight;
                         const themeHeight = document.getElementById('theme-container').offsetHeight;
-                        const offset = Math.max(navHeight + themeHeight + 20, 120); // Minimum offset
+                        const offset = Math.max(navHeight + themeHeight + 20, 120);
 
                         const elementPosition = targetElement.offsetTop;
                         const offsetPosition = elementPosition - offset;
@@ -591,12 +578,10 @@
                             behavior: 'smooth'
                         });
 
-                        // Update URL hash without triggering scroll
                         history.replaceState(null, null, '#' + elementId);
                     }
                 }
 
-                // Handle navigation selection
                 navSelect.addEventListener('change', function() {
                     const targetId = this.value;
                     if (targetId) {
@@ -604,13 +589,11 @@
                     }
                 });
 
-                // Handle URL hash on page load
                 if (window.location.hash) {
                     const hash = window.location.hash.substring(1);
                     setTimeout(() => smoothScrollToElement(hash), 100);
                 }
 
-                // Add intersection observer for active section highlighting
                 const sections = document.querySelectorAll('section[id]');
                 const navObserverOptions = {
                     rootMargin: '-100px 0px -50% 0px',
@@ -621,7 +604,6 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             const id = entry.target.id;
-                            // Update select value without triggering change event
                             navSelect.value = id;
                         }
                     });
@@ -631,7 +613,6 @@
                     navObserver.observe(section);
                 });
 
-                // Add click tracking for better UX
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function(e) {
                         const targetId = this.getAttribute('href').substring(1);
