@@ -142,6 +142,12 @@
                 border-color: var(--color-border);
             }
 
+            #nav-container label {
+                font-weight: bold;
+                color: var(--color-text-light);
+                transition: var(--transition-theme);
+            }
+
             #nav-select {
                 padding: var(--spacing-xs);
                 font-size: var(--font-size-sm);
@@ -151,6 +157,10 @@
                 background-color: var(--color-bg-light);
                 color: var(--color-text-light);
                 transition: var(--transition-theme);
+            }
+
+            body[data-theme="dark"] #nav-container label {
+                color: var(--color-text-dark);
             }
 
             body[data-theme="dark"] #nav-select {
@@ -366,7 +376,7 @@
     </head>
     <body>
         <nav id="nav-container" aria-label="Section navigation">
-            <label for="nav-select" style="font-weight: bold; color: #333;">Go To (Section):</label>
+            <label for="nav-select">Go To (Section):</label>
             <select id="nav-select" onchange="const el = document.getElementById(this.value); if(el) el.scrollIntoView({behavior: 'smooth'});" aria-describedby="nav-description">
                 <option value="" disabled selected>Select Section</option>
                 <option value="section-how-to-play">How to Play</option>
