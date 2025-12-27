@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The World Explodes in 90 Seconds | Official Documentation</title>
+        <style>
+            :root {
+                --color-text-light: #333;
+                --color-text-dark: #ffffff;
+                --color-bg-light: #ffffff;
+                --color-bg-dark: #202122;
+                --color-accent: #0969da;
+                --color-border: #ccc;
+                --color-border-light: #eaecef;
+                --color-shadow: rgba(0, 0, 0, 0.1);
+                --color-shadow-strong: rgba(0, 0, 0, 0.15);
+                --spacing-xs: 5px;
+                --spacing-sm: 10px;
+                --spacing-md: 15px;
+                --spacing-lg: 20px;
+                --spacing-xl: 24px;
+                --spacing-xxl: 40px;
+                --radius-sm: 4px;
+                --radius-md: 6px;
+                --radius-lg: 8px;
+                --font-size-sm: 14px;
+                --font-size-base: 16px;
+                --transition-theme: background-color 0.3s, color 0.3s;
+                --transition-hover: text-decoration 0.2s;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                margin: var(--spacing-xxl);
+                line-height: 1.6;
+                color: var(--color-text-light);
+                background-color: var(--color-bg-light);
+                transition: var(--transition-theme);
+                padding-top: 60px;
+            }
+
+            body[data-theme="dark"] {
+                color: var(--color-text-dark);
+                background-color: var(--color-bg-dark);
+            }
+
+            a {
+                color: var(--color-accent);
+                text-decoration: none;
+                transition: var(--transition-hover);
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            h1 {
+                border-bottom: 1px solid var(--color-border-light);
+                padding-bottom: .3em;
+                scroll-margin-top: 100px;
+            }
+
+            h2 {
+                margin-top: var(--spacing-xl);
+                margin-bottom: var(--spacing-md);
+                font-weight: 600;
+                line-height: 1.25;
+            }
+
+            h3 {
+                margin-top: 0;
+                color: black;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: var(--radius-lg);
+                box-shadow: 0 4px 6px var(--color-shadow);
+                margin: var(--spacing-sm) 0;
+            }
+
+            #nav-container {
+                position: fixed;
+                top: var(--spacing-lg);
+                right: var(--spacing-lg);
+                background-color: var(--color-bg-light);
+                padding: var(--spacing-sm);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-md);
+                box-shadow: 0 4px 12px var(--color-shadow);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-xs);
+                flex-wrap: wrap;
+                transition: var(--transition-theme);
+            }
+
+            body[data-theme="dark"] #nav-container {
+                background-color: var(--color-bg-dark);
+                border-color: var(--color-border);
+            }
+
+            #nav-container label {
+                font-weight: bold;
+                color: var(--color-text-light);
+                transition: var(--transition-theme);
+            }
+
+            #nav-select {
+                padding: var(--spacing-xs);
+                font-size: var(--font-size-sm);
+                border-radius: var(--radius-sm);
+                border: 1px solid var(--color-border);
+                cursor: pointer;
+                background-color: var(--color-bg-light);
+                color: var(--color-text-light);
+                transition: var(--transition-theme);
+            }
+
+            body[data-theme="dark"] #nav-container label {
+                color: var(--color-text-dark);
+            }
+
+            body[data-theme="dark"] #nav-select {
+                background-color: var(--color-bg-dark);
+                color: var(--color-text-dark);
+            }
+
+            #theme-container {
+                position: fixed;
+                top: 85px;
+                right: var(--spacing-lg);
+                background-color: var(--color-bg-light);
+                padding: var(--spacing-md);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-md);
+                box-shadow: 0 4px 12px var(--color-shadow);
+                z-index: 999;
+                width: 200px;
+                font-size: var(--font-size-sm);
+                color: var(--color-text-light);
+                transition: var(--transition-theme);
+            }
+
+            body[data-theme="dark"] #theme-container {
+                background-color: var(--color-bg-dark);
+                color: var(--color-text-dark);
+            }
+
+            .theme-header {
+                font-weight: bold;
+                margin-bottom: var(--spacing-sm);
+                padding-bottom: var(--spacing-xs);
+                border-bottom: 1px solid var(--color-border-light);
+                color: inherit;
+            }
+
+            .theme-option {
+                display: flex;
+                align-items: center;
+                margin-bottom: var(--spacing-xs);
+                cursor: pointer;
+                color: inherit;
+            }
+
+            .theme-option input {
+                margin-right: var(--spacing-sm);
+                cursor: pointer;
+            }
+
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            #nav-select:focus,
+            .theme-option input:focus {
+                outline: 2px solid var(--color-accent);
+                outline-offset: 2px;
+            }
+
+            .asset-item {
+                margin-bottom: 2em;
+                padding: 1em;
+                border: 1px solid var(--color-border-light);
+                border-radius: var(--radius-md);
+                background-color: rgba(255, 255, 255, 0.05);
+                transition: var(--transition-theme);
+            }
+
+            body[data-theme="dark"] .asset-item {
+                background-color: rgba(255, 255, 255, 0.03);
+            }
+
+            .asset-item details {
+                margin-top: 1em;
+            }
+
+            .asset-item summary {
+                cursor: pointer;
+                font-weight: bold;
+                color: black;
+            }
+
+            code {
+                background-color: rgba(0, 0, 0, 0.1);
+                padding: 2px 4px;
+                border-radius: 3px;
+                font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+                font-size: 0.9em;
+            }
+
+            body[data-theme="dark"] code {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            ul, ol {
+                padding-left: 1.5em;
+            }
+
+            li {
+                margin-bottom: 0.5em;
+            }
+
+            figure {
+                margin: var(--spacing-md) 0;
+            }
+
+            figcaption {
+                font-size: var(--font-size-sm);
+                color: var(--color-text-light);
+                opacity: 0.8;
+                margin-top: var(--spacing-xs);
+                text-align: center;
+            }
+
+            body[data-theme="dark"] figcaption {
+                color: var(--color-text-dark);
+            }
+
+            body[data-theme="dark"] h3 {
+                color: white;
+            }
+
+            body[data-theme="dark"] .asset-item summary {
+                color: white;
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    margin: var(--spacing-lg);
+                    padding-top: 140px;
+                }
+
+                #nav-container {
+                    top: var(--spacing-sm);
+                    right: var(--spacing-sm);
+                    left: var(--spacing-sm);
+                    justify-content: center;
+                }
+
+                #theme-container {
+                    top: 80px;
+                    right: var(--spacing-sm);
+                    width: auto;
+                    max-width: calc(100vw - 40px);
+                }
+
+                .asset-item {
+                    padding: 0.75em;
+                }
+
+                #nav-select,
+                .theme-option input {
+                    min-height: 44px;
+                    min-width: 44px;
+                }
+
+                .theme-option {
+                    padding: var(--spacing-xs) 0;
+                }
+
+                h2 {
+                    margin-top: var(--spacing-lg);
+                    margin-bottom: var(--spacing-md);
+                }
+
+                img {
+                    margin: var(--spacing-md) 0;
+                }
+            }
+
+            @media print {
+                body {
+                    margin: 0;
+                    padding-top: 0;
+                    color: black;
+                    background-color: white;
+                }
+
+                #nav-container,
+                #theme-container {
+                    display: none;
+                }
+
+                a {
+                    color: black;
+                    text-decoration: underline;
+                }
+
+                h1, h2, h3 {
+                    page-break-after: avoid;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="nav-container" aria-label="Section navigation">
+            <a href="index.html" class="back-link">← Back to Projects</a>
+            <label for="nav-select">Go To (Section):</label>
+            <select id="nav-select" onchange="const el = document.getElementById(this.value); if(el) el.scrollIntoView({behavior: 'smooth'});" aria-describedby="nav-description">
+                <option value="" disabled selected>Navigate</option>
+                <option value="section-how-to-play">How to Play</option>
+                <option value="section-free-assets">Free Assets Used</option>
+                <option value="section-follow-game-updates">Follow the Game</option>
+                <option value="section-credits">Credits</option>
+            </select>
+            <span id="nav-description" class="sr-only">Navigate to different sections of the documentation</span>
+        </nav>
+
+        <aside id="theme-container" aria-labelledby="theme-header">
+            <div id="theme-header" class="theme-header">Theme (beta)</div>
+            <div role="radiogroup" aria-labelledby="theme-header">
+                <label class="theme-option">
+                    <input type="radio" name="theme_color" value="light" checked onchange="setTheme('light')" aria-describedby="light-theme-desc">
+                    Light
+                    <span id="light-theme-desc" class="sr-only">Light color theme with white background</span>
+                </label>
+                <label class="theme-option">
+                    <input type="radio" name="theme_color" value="dark" onchange="setTheme('dark')" aria-describedby="dark-theme-desc">
+                    Dark
+                    <span id="dark-theme-desc" class="sr-only">Dark color theme with dark background</span>
+                </label>
+            </div>
+        </aside>
+
+        <main id="main-content">
+            <section aria-labelledby="section-how-to-play">
+                <header>
+                    <h1 id="section-how-to-play">The World Explodes in 90 Seconds | How to Play</h1>
+                </header>
+
+                <article>
+                    <p>Welcome to <strong>"The World Explodes in 90 Seconds"!</strong> In this <em>thrilling</em> game, your objective is to find and activate a button before you explode! Here's how to play:</p>
+
+                    <section aria-labelledby="spawn-section">
+                        <h2 id="spawn-section">You have just spawned in. What to do?</h2>
+
+                        <figure>
+                            <img src="../images/spawnedIn.png" alt="Game screenshot showing the spawn area with countdown timer visible at the top of the screen" loading="lazy" style="width: 500px;">
+                            <figcaption class="sr-only">Screenshot of the game spawn area</figcaption>
+                        </figure>
+
+                        <p>As soon as you spawn in, you'll see a <strong>countdown timer at the top of your screen.</strong> You have <strong>90 seconds</strong> to find the button and activate it!</p>
+                        <p>Look around the environment for clues and hints that will lead you to the button's location. <br>Explore different areas, interact with objects, and pay attention to any visual clues that may help you in your search.</p>
+                        <p>Once you find the button, approach it and hold it to activate it. <br>Be quick, as the timer is ticking down!</p>
+
+                        <figure>
+                            <img src="../images/buttonPreview.png" alt="Close-up view of the activation button that players need to find and press" loading="lazy" style="width: 300px;">
+                            <figcaption class="sr-only">Preview of the activation button</figcaption>
+                        </figure>
+
+                        <p>If you successfully activate the button before the timer reaches zero, <strong>you win</strong> the game!</p>
+                        <p>Shortly, you will be teleported to the 'Winners' Place,' where you should search until you find the more challenges sign, <br>and head towards it. There, you may participate in <strong>different challenges</strong> in order to win <em>Coins.</em> <br>Coins are useful to buy features in the <strong>Shop</strong> and to trade with others!</p>
+
+                        <figure>
+                            <img src="../images/headToMoreChallenges.png" alt="Sign pointing to more challenges area in the Winners' Place" loading="lazy" style="width: 350px;">
+                            <figcaption class="sr-only">Sign indicating direction to additional challenges</figcaption>
+                        </figure>
+
+                        <figure>
+                            <img src="../images/challengesAppear.png" alt="View of various challenges available in the Winners' Place" loading="lazy" style="width: 350px;">
+                            <figcaption class="sr-only">Display of some available challenges</figcaption>
+                        </figure>
+                    </section>
+
+                    <section aria-labelledby="failure-section">
+                        <h2 id="failure-section">What happens if I fail to activate the button in time?</h2>
+                        <p>If you fail to activate the button within the 90-second time limit, the game will end, though<br>don't worry; you can <em>always</em> try again!</p>
+                        <p>Feel free to explore the environment, interact with objects, and strategize for your next attempt. <br>Remember, <strong>practice makes perfect!</strong></p>
+                    </section>
+                </article>
+            </section>
+
+            <section aria-labelledby="section-free-assets">
+                <header>
+                    <h1 id="section-free-assets">The World Explodes in 90 Seconds | Free Assets Used List</h1>
+                </header>
+
+                <section aria-labelledby="meshes-section">
+                    <h2 id="meshes-section">Meshes</h2>
+
+                    <article class="asset-item">
+                        <header>
+                            <h3>Timebomb (used for timebomb minigame)</h3>
+                        </header>
+                        <p>By: <a href="https://www.roblox.com/users/8770222131/profile" target="_blank" rel="noopener">@vastintheonlyword</a></p>
+                        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/87227352133606" target="_blank" rel="noopener">Asset Link</a></p>
+                        <details>
+                            <summary><strong>Notes</strong></summary>
+                            <p>If you are seeing this (@vastintheonlyword), I believe your asset is good <em>though</em> there is one spot that is almost full-white and it kind of ruined the mesh.</p>
+                        </details>
+                    </article>
+                </section>
+
+                <section aria-labelledby="models-section">
+                    <h2 id="models-section">Models</h2>
+
+                    <article class="asset-item">
+                        <header>
+                            <h3>Donation Board 4.0 (used for obvious reasons)</h3>
+                        </header>
+                        <p>By: Dev Equip (<a href="https://www.roblox.com/communities/32958950" target="_blank" rel="noopener">Community Link</a>)</p>
+                        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/17677778124" target="_blank" rel="noopener">Asset Link</a></p>
+
+                        <details>
+                            <summary><strong>External Information about Asset</strong></summary>
+                            <p>Community Discord: <em>hidden for child safety reasons (personally, I have not checked to see if the Discord Server is appropriate <br>so I will currently not provide any Discord Server mentions if I have not personally established that they are safe, <br>check it at the direct link to asset).</em></p>
+                            <p>YouTube: <a href="https://www.youtube.com/channel/UCjkUADK-gZMKgZ7XJpF7fsQ" target="_blank" rel="noopener">Channel Link</a></p>
+                            <p>Community Owner (the asset was made by a Community within Roblox): <a href="https://www.roblox.com/users/851917460" target="_blank" rel="noopener">@DonKingFrog</a></p>
+                        </details>
+                    </article>
+
+                    <article class="asset-item">
+                        <header>
+                            <h3>Re:Notify</h3>
+                        </header>
+                        <p>By: @KateyLuvzWaffls (<a href="https://www.roblox.com/users/253925749" target="_blank" rel="noopener">Community Link</a>)</p>
+                        <p>Direct Link to Asset: <a href="https://devforum.roblox.com/t/renotify-simple-clean-notifications-framework" target="_blank" rel="noopener">Asset Link (DevForums)</a></p>
+
+                        <details>
+                            <summary><strong>External Information about Asset</strong></summary>
+                            <p>Community Discord: <em>hidden for child safety reasons (personally, I have not checked to see if the Discord Server is appropriate <br>so I will currently not provide any Discord Server mentions if I have not personally established that they are safe, <br>check it <a href="https://devforum.roblox.com/t/renotify-simple-clean-notifications-framework/2749009/59" target="_blank" rel="noopener">here</a>), labeled as 'SME Community.'</em></p>
+                        </details>
+                    </article>
+
+                    <article class="asset-item">
+                        <header>
+                            <h3>Maze (used for OG challenge)</h3>
+                        </header>
+                        <p>By: <a href="https://www.roblox.com/users/1600716686" target="_blank" rel="noopener">@DonaldDuck5150</a></p>
+                        <p>Direct Link to Asset: <a href="https://create.roblox.com/store/asset/18822017935" target="_blank" rel="noopener">Asset Link</a></p>
+                    </article>
+                </section>
+
+                <section aria-labelledby="animations-section">
+                    <h2 id="animations-section">Animations</h2>
+
+                    <article class="asset-item">
+                        <header>
+                            <h3>Roll Animation (used for roll)</h3>
+                        </header>
+                        <p>Direct ID of Asset: <code>rbxassetid://140541413512720</code></p>
+                        <p>Unfortunately, we <strong>could not</strong> trace any information about the asset (except the direct ID)</p>
+                    </article>
+                </section>
+            </section>
+
+            <section aria-labelledby="section-follow-game-updates">
+                <header>
+                    <h1 id="section-follow-game-updates">The World Explodes in 90 Seconds | Follow the Game!</h1>
+                </header>
+
+                <article>
+                    <p>Hello there, as well as we appreciate you playing the game, leaving notifications on for it would be even better!</p>
+                    <p>All you have to do is -</p>
+                    <ol>
+                        <li>Go to the game page</li>
+                        <li>Click "Notify"</li>
+                        <li>And boom! You will never miss an update again!</li>
+                    </ol>
+                    <p>(and it also helps us advertise the game!)</p>
+
+                    <figure>
+                        <img src="../images/notifyButton.png" alt="Screenshot showing the Notify button on the Roblox game page" loading="lazy" style="width: 400px;">
+                        <figcaption class="sr-only">Location of the Notify button on Roblox</figcaption>
+                    </figure>
+                </article>
+            </section>
+
+            <section aria-labelledby="section-credits">
+                <header>
+                    <h1 id="section-credits">The World Explodes in 90 Seconds | Credits</h1>
+                </header>
+
+                <article>
+                    <section aria-labelledby="developers-section">
+                        <h2 id="developers-section">Game Developers</h2>
+                        <ul>
+                            <li><a href="https://www.roblox.com/users/3274659508" target="_blank" rel="noopener">@Incognit56</a></li>
+                            <li><a href="https://www.roblox.com/users/5456387039" target="_blank" rel="noopener">@koz_viktor</a></li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="testers-section">
+                        <h2 id="testers-section">Contributors</h2>
+                        <p><strong><em>Huge</em></strong> shoutouts to these amazing contributors</p>
+                        <details>
+                            <summary><strong>Contributors</strong></summary>
+                                <ul>
+                                    <li><a href="https://www.roblox.com/users/1570959598" target="_blank" rel="noopener">@sejernbox</a></li>
+                                    <li><a href="https://www.roblox.com/users/4540627419" target="_blank" rel="noopener">@Ayothatgreat</a></li>
+                                    <li><a href="https://www.roblox.com/users/7698637022" target="_blank" rel="noopener">@hreeee45</a></li>
+                                    <li><a href="https://www.roblox.com/users/7837054428" target="_blank" rel="noopener">@Diegx_1771</a></li>
+                                </ul>
+                        </details>
+                    </section>
+                </article>
+            </section>
+        </main>
+
+        <script>
+            function setTheme(theme) {
+                const body = document.body;
+                const isDark = theme === 'dark';
+
+                body.setAttribute('data-theme', theme);
+
+                const lightRadio = document.querySelector('input[name="theme_color"][value="light"]');
+                const darkRadio = document.querySelector('input[name="theme_color"][value="dark"]');
+
+                if (isDark) {
+                    darkRadio.checked = true;
+                } else {
+                    lightRadio.checked = true;
+                }
+
+                localStorage.setItem('theme', theme);
+            }
+
+            function loadTheme() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                setTheme(savedTheme);
+            }
+
+            document.addEventListener('DOMContentLoaded', loadTheme);
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const navSelect = document.getElementById('nav-select');
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.altKey && e.key === 'n') {
+                        e.preventDefault();
+                        navSelect.focus();
+                        navSelect.setAttribute('aria-live', 'polite');
+                    }
+
+                    if (e.key === 'Escape') {
+                        document.querySelectorAll('details[open]').forEach(details => {
+                            details.removeAttribute('open');
+                        });
+                    }
+                });
+
+                function smoothScrollToElement(elementId) {
+                    const targetElement = document.getElementById(elementId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                            inline: 'nearest'
+                        });
+
+                        setTimeout(() => {
+                            history.replaceState(null, null, '#' + elementId);
+                        }, 500);
+                    }
+                }
+
+                navSelect.addEventListener('change', function() {
+                    const targetId = this.value;
+                    if (targetId) {
+                        smoothScrollToElement(targetId);
+                    }
+                });
+
+                if (window.location.hash) {
+                    const hash = window.location.hash.substring(1);
+                    setTimeout(() => smoothScrollToElement(hash), 100);
+                }
+
+                const sections = document.querySelectorAll('section[id]');
+                const navObserverOptions = {
+                    rootMargin: '-100px 0px -50% 0px',
+                    threshold: 0
+                };
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.id;
+                            navSelect.value = id;
+                        }
+                    });
+                }, navObserverOptions);
+
+                sections.forEach(section => {
+                    navObserver.observe(section);
+                });
+
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        const targetId = this.getAttribute('href').substring(1);
+                        if (document.getElementById(targetId)) {
+                            e.preventDefault();
+                            smoothScrollToElement(targetId);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

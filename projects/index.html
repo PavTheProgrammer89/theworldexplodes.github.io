@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inco's Lair</title>
+        <title>Projects | Inco's Lair</title>
         <style>
             :root {
                 --color-text-light: #333;
@@ -37,7 +37,7 @@
                 color: var(--color-text-light);
                 background-color: var(--color-bg-light);
                 transition: var(--transition-theme);
-                padding-top: 60px;
+                padding-top: 80px;
             }
 
             body[data-theme="dark"] {
@@ -59,9 +59,6 @@
                 border-bottom: 1px solid var(--color-border-light);
                 padding-bottom: .3em;
                 scroll-margin-top: 100px;
-                font-size: 2.5em;
-                text-align: center;
-                margin-bottom: var(--spacing-xl);
             }
 
             h2 {
@@ -69,6 +66,60 @@
                 margin-bottom: var(--spacing-md);
                 font-weight: 600;
                 line-height: 1.25;
+            }
+
+            #nav-container {
+                position: fixed;
+                top: var(--spacing-lg);
+                right: var(--spacing-lg);
+                background-color: var(--color-bg-light);
+                padding: var(--spacing-sm);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-md);
+                box-shadow: 0 4px 12px var(--color-shadow);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-xs);
+                flex-wrap: wrap;
+                transition: var(--transition-theme);
+                font-size: var(--font-size-sm);
+            }
+
+            body[data-theme="dark"] #nav-container {
+                background-color: var(--color-bg-dark);
+                border-color: var(--color-border);
+            }
+
+            #nav-container label {
+                font-weight: bold;
+                color: var(--color-text-light);
+                transition: var(--transition-theme);
+            }
+
+            #nav-select {
+                padding: var(--spacing-xs);
+                font-size: var(--font-size-sm);
+                border-radius: var(--radius-sm);
+                border: 1px solid var(--color-border);
+                cursor: pointer;
+                background-color: var(--color-bg-light);
+                color: var(--color-text-light);
+                transition: var(--transition-theme);
+            }
+
+            body[data-theme="dark"] #nav-container label {
+                color: var(--color-text-dark);
+            }
+
+            body[data-theme="dark"] #nav-select {
+                background-color: var(--color-bg-dark);
+                color: var(--color-text-dark);
+            }
+
+            #nav-select:focus {
+                outline: 2px solid var(--color-accent);
+                outline-offset: 2px;
             }
 
             #theme-container {
@@ -125,91 +176,55 @@
                 border: 0;
             }
 
+            #theme-container input:focus,
             .theme-option input:focus {
                 outline: 2px solid var(--color-accent);
                 outline-offset: 2px;
             }
 
-            .lair-intro {
-                text-align: center;
-                margin-bottom: var(--spacing-xxl);
-                padding: var(--spacing-xl);
-                border-radius: var(--radius-lg);
-                background-color: rgba(255, 255, 255, 0.05);
+            .project-item {
+                margin-bottom: 2em;
+                padding: 1em;
                 border: 1px solid var(--color-border-light);
-            }
-
-            body[data-theme="dark"] .lair-intro {
-                background-color: rgba(255, 255, 255, 0.03);
-            }
-
-            .navigation-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: var(--spacing-lg);
-                margin-top: var(--spacing-xl);
-            }
-
-            .nav-card {
-                padding: var(--spacing-lg);
-                border: 1px solid var(--color-border-light);
-                border-radius: var(--radius-lg);
-                background-color: rgba(255, 255, 255, 0.05);
-                transition: var(--transition-theme), transform 0.2s, box-shadow 0.2s;
-                text-align: center;
-            }
-
-            .nav-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 25px var(--color-shadow);
-            }
-
-            body[data-theme="dark"] .nav-card {
-                background-color: rgba(255, 255, 255, 0.03);
-            }
-
-            .nav-card h3 {
-                margin-top: 0;
-                margin-bottom: var(--spacing-md);
-                color: var(--color-text-light);
-            }
-
-            body[data-theme="dark"] .nav-card h3 {
-                color: var(--color-text-dark);
-            }
-
-            .nav-card p {
-                margin-bottom: var(--spacing-lg);
-                color: var(--color-text-light);
-                opacity: 0.8;
-            }
-
-            body[data-theme="dark"] .nav-card p {
-                color: var(--color-text-dark);
-            }
-
-            .nav-card .cta-button {
-                display: inline-block;
-                padding: var(--spacing-sm) var(--spacing-md);
-                background-color: var(--color-accent);
-                color: white;
                 border-radius: var(--radius-md);
-                text-decoration: none;
-                font-weight: 500;
-                transition: background-color 0.2s, transform 0.1s;
+                background-color: rgba(255, 255, 255, 0.05);
+                transition: var(--transition-theme);
             }
 
-            .nav-card .cta-button:hover {
-                background-color: #0755c2;
-                transform: translateY(-1px);
-                text-decoration: none;
-                color: white;
+            body[data-theme="dark"] .project-item {
+                background-color: rgba(255, 255, 255, 0.03);
+            }
+
+            .project-item h3 {
+                margin-top: 0;
+                color: var(--color-text-light);
+            }
+
+            body[data-theme="dark"] .project-item h3 {
+                color: var(--color-text-dark);
+            }
+
+            .back-link {
+                margin-bottom: var(--spacing-lg);
+                display: inline-block;
             }
 
             @media (max-width: 768px) {
                 body {
                     margin: var(--spacing-lg);
-                    padding-top: 140px;
+                    padding-top: 160px;
+                }
+
+                #nav-container {
+                    top: var(--spacing-sm);
+                    right: var(--spacing-sm);
+                    left: var(--spacing-sm);
+                    justify-content: center;
+                }
+
+                #nav-select {
+                    min-height: 44px;
+                    min-width: 44px;
                 }
 
                 #theme-container {
@@ -219,17 +234,8 @@
                     max-width: calc(100vw - 40px);
                 }
 
-                .navigation-grid {
-                    grid-template-columns: 1fr;
-                    gap: var(--spacing-md);
-                }
-
-                .nav-card {
-                    padding: var(--spacing-md);
-                }
-
-                h1 {
-                    font-size: 2em;
+                .project-item {
+                    padding: 0.75em;
                 }
             }
 
@@ -241,6 +247,7 @@
                     background-color: white;
                 }
 
+                #nav-container,
                 #theme-container {
                     display: none;
                 }
@@ -257,6 +264,15 @@
         </style>
     </head>
     <body>
+        <nav id="nav-container" aria-label="Site navigation">
+            <a href="../index.html" class="back-link">← Back to Inco's Lair</a>
+            <select id="nav-select" onchange="const el = document.getElementById(this.value); if(el) el.scrollIntoView({behavior: 'smooth'});" aria-describedby="nav-description">
+                <option value="" disabled selected>Navigate</option>
+                <option value="roblox-section">Roblox Games</option>
+            </select>
+            <span id="nav-description" class="sr-only">Navigate to different sections of the projects page</span>
+        </nav>
+
         <aside id="theme-container" aria-labelledby="theme-header">
             <div id="theme-header" class="theme-header">Theme (beta)</div>
             <div role="radiogroup" aria-labelledby="theme-header">
@@ -275,21 +291,16 @@
 
         <main id="main-content">
             <header>
-                <h1>Inco's Lair</h1>
+                <h1>Games</h1>
             </header>
 
-            <!-- <section class="lair-intro">
-                <p></p>
-            </section> -->
+            <section aria-labelledby="roblox-section">
+                <h2 id="roblox-section">Roblox</h2>
 
-            <section aria-labelledby="navigation-section">
-                <div class="navigation-grid">
-                    <article class="nav-card">
-                        <h3>Projects</h3>
-                        <p>Explore my collection of games, tools, and creative projects. From Roblox games to web applications, see what I've built.</p>
-                        <a href="projects/index.html" class="cta-button">View Projects</a>
-                    </article>
-                </div>
+                <article class="project-item">
+                    <h3><a href="world-explodes.html">The World Explodes in 90 Seconds</a></h3>
+                    <p>A thrilling Roblox game where you have 90 seconds to find and activate a button before the world explodes!</p>
+                </article>
             </section>
         </main>
 
@@ -318,6 +329,65 @@
             }
 
             document.addEventListener('DOMContentLoaded', loadTheme);
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const navSelect = document.getElementById('nav-select');
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.altKey && e.key === 'n') {
+                        e.preventDefault();
+                        navSelect.focus();
+                        navSelect.setAttribute('aria-live', 'polite');
+                    }
+
+                    if (e.key === 'Escape') {
+                        document.querySelectorAll('details[open]').forEach(details => {
+                            details.removeAttribute('open');
+                        });
+                    }
+                });
+
+                function smoothScrollToElement(elementId) {
+                    const targetElement = document.getElementById(elementId);
+                    if (targetElement) {
+                        const navHeight = document.getElementById('nav-container').offsetHeight;
+                        const themeHeight = document.getElementById('theme-container').offsetHeight;
+                        const offset = Math.max(navHeight + themeHeight + 20, 120);
+
+                        const elementPosition = targetElement.offsetTop;
+                        const offsetPosition = elementPosition - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        history.replaceState(null, null, '#' + elementId);
+                    }
+                }
+
+                navSelect.addEventListener('change', function() {
+                    const targetId = this.value;
+                    if (targetId) {
+                        smoothScrollToElement(targetId);
+                    }
+                });
+
+                if (window.location.hash) {
+                    const hash = window.location.hash.substring(1);
+                    setTimeout(() => smoothScrollToElement(hash), 100);
+                }
+
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        const targetId = this.getAttribute('href').substring(1);
+                        if (document.getElementById(targetId)) {
+                            e.preventDefault();
+                            smoothScrollToElement(targetId);
+                        }
+                    });
+                });
+            });
         </script>
     </body>
 </html>
